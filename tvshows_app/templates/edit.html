@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Show Info</title>
+
+    <style>
+        h1 {
+            border: 3px solid orange;
+            display: inline-block;
+            background-color: #bccaff;
+        }
+        label {
+            background-color: #bccaff;
+        }
+        #main {
+            background-color: #bccaff;
+            border: 5px solid orange;
+            padding: 20px;
+            height: 250px;
+            width: 400px;
+        }
+        #title {
+            padding: 10px;
+        }
+        #network {
+            padding:10px;
+        }
+        #date {
+            padding:10px;
+        }
+        #desc {
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Edit {{show.title}} {{show.id}}</h1>
+    <a href="/shows">Go Back</a>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/shows/{{show.id}}/update" method="POST">
+        {% csrf_token %}
+        <div id="main">
+        <label>Title:</label></br>
+        <input type="text" name="title" value={{show.title}}></br>
+        <label>Network:</label></br>
+        <input type="text" name="network" value={{show.network}}></br>
+        <label>Release Date:</label></br>
+        <input type="date" name="date" ></br>
+        <label>Description:</label></br>
+        <input type="textarea" name="desc"></br>
+        <button type="submit">Update</button>
+        </div>
+
+    </form>
+    <p><a href="/shows/{{show.id}}">See Updated Show</a></p>
+   
+</body>
+</html>

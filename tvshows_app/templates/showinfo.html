@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Show Info</title>
+    <style>
+        h1 {
+            border: 5px solid orange;
+            background-color: #bccaff;
+            width: 300px;
+            font-size: 30px;
+
+        }
+        p {
+            border: 5px solid orange;
+            background-color: #bccaff;
+            width: 300px;
+            height: 20px;
+            padding: 25px;
+        }
+        #links h3 {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{show.title}} {{show.id}}</h1>
+    <a href="/shows">Go Back</a>
+    <p>Title: {{show.title}}</p>
+    <p>Network: {{show.network}}</p>
+    <p>Release Date: {{show.date}}</p>
+    <p>Description: {{show.desc}}</p>
+    <p>Last Updated: {{show.updated_at}}</p>
+    <div id="links">
+    <h3><a href="/shows/{{show.id}}/edit">Edit</a><form action="/destroy"><a href="/shows/{{show.id}}/destroy"> Delete</a></h3></form>
+    </div>
+</body>
+</html>

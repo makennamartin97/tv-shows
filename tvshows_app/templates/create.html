@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Add a New Show</title>
+    <style>
+        h1 {
+            border: 3px solid orange;
+            display: inline-block;
+            height: 40px;
+            width: 250px;
+            background-color: #bccaff;
+
+        }
+        button {
+            background-color: orange;
+            color: black;
+            height: 30px;
+            width: 50px;
+            border-radius: 30%;
+
+        }
+        p {
+            color: black;
+            border: 4px solid orange;
+            height: 55px;
+            width: 200px;
+            background-color: #bccaff;
+            
+        }
+    
+
+       
+
+    </style>
+    
+</head>
+<body>
+    <h1>Add a New Show</h1>
+    <a href="/shows">Go Back</a>
+    {% if messages %}
+    <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="/create" method="POST">
+        {% csrf_token %}
+        <div id="main">
+        <p>Title:<input type="text" name="title" id="" ></p>
+        <p>Network:<input type="text" name="network" id=""></p>
+        <p>Release Date: <input type="date" name="date" value="" id=""></p>
+        <p>Description:</br><textarea type="textarea" name="desc" id=""></textarea></p>
+        <button type="submit" value="create">Create</button>
+        </div>
+    </form>
+
+
+</body>
+</html>

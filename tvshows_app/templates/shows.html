@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Tv Shows</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 4px solid orange;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #bccaff;
+        }
+        h1{
+            text-align: center;
+            color: #000000;
+        }
+        h3{
+            text-align: center;
+            color: #000000;
+        }
+        </style>
+</head>
+<body>
+    <h1>All Shows</h1>
+    
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Network</th>
+            <th>Release Date</th>
+            <th>Actions</th>
+        </tr>
+        {% for show in all_shows %}
+        <tr>
+            <td>{{show.id}}</td>
+            <td>{{show.title}}</td>
+            <td>{{show.network}}</td>
+            <td>{{show.date}}</td>
+            <td><a href="/shows/{{show.id}}/edit">Edit | </a><a href="/shows/{{show.id}}">Show | </a><a href="/shows/{{show.id}}/destroy">Delete</a></td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3><a href="/shows/new">Add a New Show</a></h3>
+
+</body>
+</html>
